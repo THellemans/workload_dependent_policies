@@ -1,4 +1,3 @@
-clear all
 addpath('../general_functions')
 addpath('../../generally_applicable_code')
 
@@ -10,6 +9,7 @@ stype=0;
 sp1=0;sp2=0;sp3=0;
 jtype=0;
 p=1/2;
+px=zeros(1,10); xx=zeros(1,10);
 for i=1:10
     px(i)=(1-p)^(i-1)*p;
     xx(i)=i;
@@ -20,6 +20,7 @@ nruns=40;
 X_cont=false;
 
 Fbar0=0.999;
+lam_max=zeros(4,length(q_iter));
 
 
 for j=1:4
@@ -44,10 +45,9 @@ for j=1:4
     end
     for i =1:length(q_iter)
         q=q_iter(i);
-        EgSX(i,j)=(1+q);
         [~,~,Fbargx_inv,~] = g_dists(Fbar_S, q, px, xx, X_cont, w_range);
         
         [ lam_max(i,j) ] = find_lam_max_PHD( Fbar0, d, k, delta, q, alpha, A, Fbargx_inv,  px, xx, w_range, 10^(-6) ,0, 1 );
-        save('num3.mat','lam_max','q_iter','k','d','delta')
     end
+    save('num_test.mat','lam_max','q_iter','k','d','delta')
 end

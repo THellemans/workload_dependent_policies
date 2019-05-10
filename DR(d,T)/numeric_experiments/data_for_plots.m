@@ -24,7 +24,7 @@ tol1=10^(-5); tol2=10^(-5);
 [gSX,GSXbar,Fbargx_inv,fgx_inv] = g_dists(Fbar_S, q, px, xx, false, w_range);
 
 FRbar=cell(length(d_iter), length(T_iter));
-for i=4:4
+for i=1:4
     d=d_iter(i);
     for j=1:length(T_iter)
         T=T_iter(j);

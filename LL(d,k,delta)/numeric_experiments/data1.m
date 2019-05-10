@@ -1,6 +1,9 @@
 % Here we analyze LL(d,k,\delta) in a model with job size X which is then
 % split into (X/k,...,X/k).
 
+addpath('../../generally_applicable_code')
+addpath('../general_functions')
+
 dists={'Erlang','Exp','HExp','HExp'};
 SCV=[1/2, 1, 5, 10];
 lam=0.8; d=20; delta=0.01; w_range=linspace(0,500,10^6);

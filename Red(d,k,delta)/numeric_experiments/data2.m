@@ -1,6 +1,5 @@
-clear all
-addpath('../../generally_applicable_code')
 addpath('../general_functions')
+addpath('../../generally_applicable_code')
 
 d=5;
 
@@ -12,16 +11,14 @@ stype=0;
 sp1=0;sp2=0;sp3=0;
 jtype=0;
 p=1/2;
+px2=zeros(1,10); xx2=zeros(1,10);
 for i=1:10
     px2(i)=(1-p)^(i-1)*p;
     xx2(i)=i;
 end
 px2(10)=1-sum(px2(1:9));
 xx2=xx2./sum(px2.*xx2);
-N=300;
-nruns=40;
-runlen=round(10^7/N);
-w_range=linspace(0,200,10^5);
+w_range=linspace(0,200,10^4);
 alpha=1;
 A=-1;
 Fbar_S= @(x) exp(-x);
@@ -29,6 +26,8 @@ Fbar_S= @(x) exp(-x);
 X_cont=false;
 
 nlam=100;
+lam_max=zeros(size(k_iter));
+MRT=zeros(length(k_iter), nlam);
 for i=1:length(k_iter)
     k=k_iter(i);
     d=d_iter(i);
@@ -45,6 +44,6 @@ for i=1:length(k_iter)
         else
             [ MRT(i,j), ~, Fbar ] = get_MRT( lam, d, k, delta, q, alpha, A, Fbargx_inv,  px, xx, w_range, 10^(-8), Fbar(1),1 );
         end
-        save('num5.mat','MRT','k_iter','d','lam_max','nlam')
     end
+    save('num2.mat','MRT','k_iter','d','lam_max','nlam')
 end

@@ -1,12 +1,15 @@
 % Here we analyze LL(d,k,\delta) in a model with job size X which is then
 % split into (X/k,...,X/k).
 
+addpath('../../generally_applicable_code')
+addpath('../general_functions')
+
 dists={'Erlang','Exp','HExp','HExp'};
 SCV=[1/2, 1, 5, 10];
 lam=0.799; k=1; delta=0.01; w_range=linspace(0,500,10^6);
 addpath('../generally_applicable_code')
 
-d_iter=2:50;
+d_iter=2:24;
 MRT_holder=zeros(length(dists), length(d_iter));
 for j=1:length(dists)
     if strcmp(dists{j},'Erlang')

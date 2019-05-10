@@ -24,7 +24,7 @@ while (Fbar0max-Fbar0min > tol2)
         %first_negative=find(Fbar_new<0, 1 );
         %most_negative=min(Fbar_new);
         %Fbar_new(first_negative:end)=0;
-        if (max(abs(Fbar_old-Fbar_new))<abs(Fbar_new(end)/10)) || (Fbar_new(end) < -1)
+        if (max(abs(Fbar_old-Fbar_new))<abs(Fbar_new(end)/10)) || max(abs(Fbar_old-Fbar_new))<tol1 || (Fbar_new(end) < -1)
             if (max(abs(Fbar_old-Fbar_new))<abs(Fbar_new(end)/10))
                 found_something=true;
             end

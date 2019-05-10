@@ -1,0 +1,2 @@
+ 1. Red(d,k,\delta) data1 laten lopen	
+ 2. Alles van JTQ(d,T) laten lopen

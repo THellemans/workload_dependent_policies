@@ -1,6 +1,5 @@
 addpath('../general_functions')
 addpath('../../generally_applicable_code')
-clear all
 
 T_iter=linspace(0.01,40,300);
 w_range=linspace(0,200,10^5);
@@ -8,8 +7,7 @@ d=2;
 lam=0.9;
 A=-1;
 tol1=10^(-4); tol2=10^(-4);
-
-load('num2.mat')
+MRT=zeros(4,length(T_iter));
 for i=1:4
     if i==1
         w_range=linspace(0,200,10^5);
@@ -31,15 +29,12 @@ for i=1:4
         g=hyperexponential_pdf( alpha, A, w_range );
     end
     for j=1:length(T_iter)
-        if i==1 && j <= 197
-            continue
-        end
         T=T_iter(j);
-        if j==1 || (j==198 && i==1)
-            [Fbar, ~, ~, MRT(i,j)] = get_MRT( lam, T, lam, d, Gbar, g, w_range );
+        if j==1
+            [Fbar, ~, ~, MRT(i,j)] = get_MRT( T, lam, d, Gbar, g, w_range );
         else
-            [Fbar, ~, ~, MRT(i,j)] = get_MRT( lam, T, lam, d, Gbar, g, w_range, Fbar );
+            [Fbar, ~, ~, MRT(i,j)] = get_MRT( T, lam, d, Gbar, g, w_range, Fbar );
         end
-        save('num2.mat','MRT','T_iter');
     end
+    save('num2_test.mat','MRT','T_iter');
 end

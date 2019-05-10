@@ -4,7 +4,6 @@ close all
 h=figure
 marker_list=['d','x','o','+','s'];
 line_list={'-','--','-.',':','-'};
-%%%%%%%%%%%%% this changes
 for i=1:4
     plot(T_iter, MRT(i,:), 'k', 'LineWidth', 1.1,...
     'Marker',marker_list(i),'LineStyle', line_list{i},'MarkerSize',6, 'MarkerIndices', 1:6:length(MRT(i,:)))

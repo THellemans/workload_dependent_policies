@@ -19,7 +19,7 @@ while true
     elseif abs(old_error-max(abs(Fbar_new-Fbar_old)))<10^(-14)
         break
     end
-    old_error=max(abs(Fbar_new-Fbar_old))
+    old_error=max(abs(Fbar_new-Fbar_old));
     Fbar_old=Fbar_new;
 end
 end
